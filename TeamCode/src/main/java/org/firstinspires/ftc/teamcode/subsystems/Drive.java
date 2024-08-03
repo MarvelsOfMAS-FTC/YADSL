@@ -5,15 +5,16 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.utils.MotorConfig;
 import org.firstinspires.ftc.teamcode.utils.MotorDirectionConfig;
 
 public class Drive extends SubsystemBase {
     DcMotorEx fr,fl,br,bl;
-    public Drive(final HardwareMap hMap, final String fr, String fl, String br, String bl, MotorDirectionConfig directionConfig) {
-        this.fr=hMap.get(DcMotorEx.class,fr);
-        this.fl=hMap.get(DcMotorEx.class,fl);
-        this.br=hMap.get(DcMotorEx.class,br);
-        this.bl=hMap.get(DcMotorEx.class,bl);
+    public Drive(final HardwareMap hMap, MotorConfig config, MotorDirectionConfig directionConfig) {
+        this.fr=hMap.get(DcMotorEx.class,config.getFr());
+        this.fl=hMap.get(DcMotorEx.class,config.getFl());
+        this.br=hMap.get(DcMotorEx.class,config.getBr());
+        this.bl=hMap.get(DcMotorEx.class,config.getBl());
         if(directionConfig.getFr()){
             this.fr.setDirection(DcMotorSimple.Direction.REVERSE);
         }

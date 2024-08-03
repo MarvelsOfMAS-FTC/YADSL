@@ -24,4 +24,20 @@ public class MotorConfig {
     public String getFr() {
         return fr;
     }
+
+    public void setBl(String bl) {
+        this.bl = bl;
+    }
+
+    public void setFl(String fl) {
+        this.fl = fl;
+    }
+
+    public void setBr(String br) {
+        this.br = br;
+    }
+
+    public void setFr(String fr) {
+        this.fr = fr;
+    }
 }

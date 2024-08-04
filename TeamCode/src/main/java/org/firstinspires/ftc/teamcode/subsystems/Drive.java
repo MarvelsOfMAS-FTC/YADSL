@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.subsystems;
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.RADIANS;
 
 import com.arcrobotics.ftclib.command.SubsystemBase;
+import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -18,7 +19,8 @@ import org.firstinspires.ftc.teamcode.utils.MotorDirectionConfig;
 public class Drive extends SubsystemBase {
     DcMotorEx fr,fl,br,bl;
     IMU imu;
-    public Drive(final HardwareMap hMap, IMU imu, MotorConfig config, MotorDirectionConfig directionConfig) {
+
+    public Drive(final HardwareMap hMap, String imu, MotorConfig config, MotorDirectionConfig directionConfig) {
         this.fr=hMap.get(DcMotorEx.class,config.getFr());
         this.fl=hMap.get(DcMotorEx.class,config.getFl());
         this.br=hMap.get(DcMotorEx.class,config.getBr());
@@ -36,18 +38,20 @@ public class Drive extends SubsystemBase {
             this.bl.setDirection(DcMotorSimple.Direction.REVERSE);
         }
         // Retrieve the IMU from the hardware map
-        imu = hMap.get(IMU.class, "imu");
+        this.imu = hMap.get(IMU.class, imu);
         IMU.Parameters parameters = Constants.IMU_ORIENTATION;
-        imu.initialize(parameters);
-        this.imu = imu;
+        this.imu.initialize(parameters);
+
 
     }
+
+
     /*
      * y = -leftsticky
      * x = leftstickx
      * r = rightstickx
      */
-    public void robotCentricDrive(double x,double y,double r){
+    public void robotCentricDrive(double x, double y, double r){
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(x), 1);
         fl.setPower((y+x+r)/denominator);
         bl.setPower((y-x+r)/denominator);
@@ -76,6 +80,10 @@ public class Drive extends SubsystemBase {
         bl.setPower((rotY - rotX + r)/denominator);
         fr.setPower((rotY - rotX - r)/denominator);
         br.setPower((rotY + rotX - r)/denominator);
+    }
+
+    public void resetYaw(){
+        imu.resetYaw();
     }
 
 }

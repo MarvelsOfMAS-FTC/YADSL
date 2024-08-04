@@ -1,19 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.dashboard.config.Config;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
+import com.qualcomm.robotcore.hardware.IMU;
 
 @Config
 public class Constants {
-
-    public static double TICKS_PER_REV = 383.6;
-    public static double WHEEL_DIAMETER = 0.1;
-    public static double DISTANCE_PER_PULSE = WHEEL_DIAMETER * Math.PI / TICKS_PER_REV;
-    public static double TRACK_WIDTH = 0.4572;
-
-    public static double MAX_VELOCITY = 1.5;
-    public static double MAX_ACCELERATION = 1.5;
-
-    public static double B = 2.0;
-    public static double ZETA = 0.7;
+    public static final IMU.Parameters IMU_ORIENTATION = new IMU.Parameters(new RevHubOrientationOnRobot(
+            RevHubOrientationOnRobot.LogoFacingDirection.UP,
+            RevHubOrientationOnRobot.UsbFacingDirection.FORWARD));
 
 }

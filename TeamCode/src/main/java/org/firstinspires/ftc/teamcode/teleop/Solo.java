@@ -1,16 +1,15 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
-import com.arcrobotics.ftclib.command.InstantCommand;
-import com.arcrobotics.ftclib.command.button.Button;
 import com.arcrobotics.ftclib.command.button.GamepadButton;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.ConceptScanServo;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.commands.DriveCommand;
+import org.firstinspires.ftc.teamcode.commands.DroneCommand;
+import org.firstinspires.ftc.teamcode.commands.HandCommand;
 import org.firstinspires.ftc.teamcode.commands.IntakeCommand;
 import org.firstinspires.ftc.teamcode.commands.SlideCommand;
 import org.firstinspires.ftc.teamcode.subsystems.Drive;
@@ -28,15 +27,26 @@ public class Solo extends CommandOpMode {
 
         IntakeSubsystem intake = new IntakeSubsystem(hardwareMap, Constants.intake);
         Drive drive = new Drive(hardwareMap, Constants.imu,new MotorConfig(Constants.fr,Constants.fl,Constants.br,Constants.bl),new MotorDirectionConfig(false,false,false,false));
-        /*
-        DroneSubsystem drone = new DroneSubsystem();
-        HandSubsystem hand = new HandSubsystem();
-        SlideSubsystem slide = new SlideSubsystem();
-        */
+        DroneSubsystem drone = new DroneSubsystem(hardwareMap, Constants.drone);
+        HandSubsystem hand = new HandSubsystem(hardwareMap, Constants.hand);
+        SlideSubsystem slide = new SlideSubsystem(hardwareMap, Constants.rSlide, Constants.lSlide, DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD);
+
 
 
 
         // default commands...
         drive.setDefaultCommand(new DriveCommand(drive,base));
+        intake.setDefaultCommand(new IntakeCommand(intake, 0));
+        drone.setDefaultCommand(new DroneCommand(drone, Constants.load));
+        hand.setDefaultCommand(new HandCommand(hand, Constants.in));
+        slide.setDefaultCommand(new SlideCommand(slide, base));
+
+        //Binding Commands
+        new GamepadButton(base, GamepadKeys.Button.A).toggleWhenPressed(new HandCommand(hand, Constants.out), new HandCommand(hand, Constants.in));
+        new GamepadButton(base, GamepadKeys.Button.B).toggleWhenPressed(new DroneCommand(drone, Constants.launch), new DroneCommand(drone, Constants.load));
+        new GamepadButton(base, GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new IntakeCommand(intake, 1)).whenReleased(new IntakeCommand(intake, 0));
+        new GamepadButton(base, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new IntakeCommand(intake, -1)).whenReleased(new IntakeCommand(intake, 0));
+
+
     }
 }

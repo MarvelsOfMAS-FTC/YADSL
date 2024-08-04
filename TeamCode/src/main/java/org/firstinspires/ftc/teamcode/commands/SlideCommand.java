@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
+import com.arcrobotics.ftclib.gamepad.GamepadEx;
+import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.SlideSubsystem;
@@ -15,17 +17,17 @@ import java.util.function.DoubleSupplier;
 public class SlideCommand extends CommandBase {
 
     private final SlideSubsystem slide;
-    private final double speed;
+    private final GamepadEx gamepad;
 
-    public SlideCommand(SlideSubsystem slide, double speed) {
+    public SlideCommand(SlideSubsystem slide, GamepadEx gamepad) {
         this.slide=slide;
-        this.speed=speed;
+        this.gamepad = gamepad;
         addRequirements(slide);
     }
 
     @Override
     public void execute() {
-        slide.set(speed);
+        slide.set(gamepad.getTrigger(GamepadKeys.Trigger.RIGHT_TRIGGER)-gamepad.getTrigger(GamepadKeys.Trigger.LEFT_TRIGGER));
     }
 
 }

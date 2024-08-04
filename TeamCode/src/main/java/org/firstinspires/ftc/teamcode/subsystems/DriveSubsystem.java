@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.utils.MotorConfig;
 import org.firstinspires.ftc.teamcode.utils.MotorDirectionConfig;
 
-public class Drive extends SubsystemBase {
+public class DriveSubsystem extends SubsystemBase {
     DcMotorEx fr,fl,br,bl;
-    public Drive(final HardwareMap hMap, MotorConfig config, MotorDirectionConfig directionConfig) {
+    public DriveSubsystem(final HardwareMap hMap, MotorConfig config, MotorDirectionConfig directionConfig) {
         this.fr=hMap.get(DcMotorEx.class,config.getFr());
         this.fl=hMap.get(DcMotorEx.class,config.getFl());
         this.br=hMap.get(DcMotorEx.class,config.getBr());

@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.acmerobotics.dashboard.config.Config;
 
 @Config
-public class DriveConstants {
+public class Constants {
 
     public static double TICKS_PER_REV = 383.6;
     public static double WHEEL_DIAMETER = 0.1;

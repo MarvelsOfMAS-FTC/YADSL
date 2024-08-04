@@ -1,24 +1,27 @@
 package org.firstinspires.ftc.teamcode.commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
+import com.arcrobotics.ftclib.command.RunCommand;
+import com.arcrobotics.ftclib.gamepad.GamepadEx;
 
 import org.firstinspires.ftc.teamcode.subsystems.Drive;
 
-public class DriveCommand extends CommandBase {
-    private final Drive drive;
-    private double x, y, r;
+import java.util.function.DoubleSupplier;
 
-    public DriveCommand(Drive drive, double x, double y, double r){
-        this.drive = drive;
-        this.x=x;
-        this.y=y;
-        this.r=r;
-        addRequirements(drive);
+public class DriveCommand extends RunCommand {
+
+    public DriveCommand(Drive drive, GamepadEx gamepad){
+        super(() -> drive.robotCentricDrive(
+                gamepad.getLeftX(),
+                -gamepad.getLeftY(),
+                gamepad.getRightX()
+        ), drive);
+//        super(()->drive.fieldCentricDrive(
+//                gamepad.getLeftX(),
+//                -gamepad.getLeftY(),
+//                gamepad.getRightX()
+//        ),drive);
     }
-    @Override
-    public void execute(){
-        drive.robotCentricDrive(x, y, r);
-        //drive.fieldCentricDrive(x,y,r);
-    }
+
 
 }

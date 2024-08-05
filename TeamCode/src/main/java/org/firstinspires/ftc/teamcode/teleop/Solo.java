@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.commands.DriveCommand;
 import org.firstinspires.ftc.teamcode.commands.DroneCommand;
 import org.firstinspires.ftc.teamcode.commands.HandCommand;
 import org.firstinspires.ftc.teamcode.commands.IntakeCommand;
-import org.firstinspires.ftc.teamcode.commands.SlideCommand;
+import org.firstinspires.ftc.teamcode.commands.SlideArmCommand;
 import org.firstinspires.ftc.teamcode.subsystems.Drive;
 import org.firstinspires.ftc.teamcode.subsystems.DroneSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.HandSubsystem;
@@ -39,7 +39,7 @@ public class Solo extends CommandOpMode {
         intake.setDefaultCommand(new IntakeCommand(intake, 0));
         drone.setDefaultCommand(new DroneCommand(drone, Constants.load));
         hand.setDefaultCommand(new HandCommand(hand, Constants.in));
-        slide.setDefaultCommand(new SlideCommand(slide, base));
+        slide.setDefaultCommand(new SlideArmCommand(slide, base));
 
         //Binding Commands
         new GamepadButton(base, GamepadKeys.Button.A).toggleWhenPressed(new HandCommand(hand, Constants.out), new HandCommand(hand, Constants.in));

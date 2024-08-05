@@ -33,6 +33,7 @@ public class PIDFArmSubsystem extends SubsystemBase {
     public void set(double target) {
         this.target = target;
     }
+    public void change(double amount){this.target+=amount;}
 
     @Override
     public void periodic() {

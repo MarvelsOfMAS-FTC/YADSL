@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode.subsystems;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.DcMotorSimple.Direction;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -23,5 +25,8 @@ public class SlideSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
+        telemetry.addData("Right ", right.getCurrentPosition());
+        telemetry.addData("Left ", left.getCurrentPosition());
+        telemetry.update();
     }
 }

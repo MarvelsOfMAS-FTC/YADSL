@@ -12,11 +12,13 @@ import org.firstinspires.ftc.teamcode.commands.DroneCommand;
 import org.firstinspires.ftc.teamcode.commands.HandCommand;
 import org.firstinspires.ftc.teamcode.commands.IntakeCommand;
 import org.firstinspires.ftc.teamcode.commands.SlideArmCommand;
+import org.firstinspires.ftc.teamcode.commands.TransferCommand;
 import org.firstinspires.ftc.teamcode.subsystems.Drive;
 import org.firstinspires.ftc.teamcode.subsystems.DroneSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.HandSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.SlideSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.TransferSubsystem;
 import org.firstinspires.ftc.teamcode.utils.MotorConfig;
 import org.firstinspires.ftc.teamcode.utils.MotorDirectionConfig;
 
@@ -30,11 +32,11 @@ public class Solo extends CommandOpMode {
         DroneSubsystem drone = new DroneSubsystem(hardwareMap, Constants.drone);
         HandSubsystem hand = new HandSubsystem(hardwareMap, Constants.hand);
         SlideSubsystem slide = new SlideSubsystem(hardwareMap, Constants.rSlide, Constants.lSlide, DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD);
+        TransferSubsystem transfer = new TransferSubsystem(hardwareMap, Constants.transfer);
 
 
 
-
-        // default commands...
+        //Default Commands
         drive.setDefaultCommand(new DriveCommand(drive,base));
         intake.setDefaultCommand(new IntakeCommand(intake, 0));
         drone.setDefaultCommand(new DroneCommand(drone, Constants.load));
@@ -44,7 +46,7 @@ public class Solo extends CommandOpMode {
         //Binding Commands
         new GamepadButton(base, GamepadKeys.Button.A).toggleWhenPressed(new HandCommand(hand, Constants.out), new HandCommand(hand, Constants.in));
         new GamepadButton(base, GamepadKeys.Button.B).toggleWhenPressed(new DroneCommand(drone, Constants.launch), new DroneCommand(drone, Constants.load));
-        new GamepadButton(base, GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new IntakeCommand(intake, 1)).whenReleased(new IntakeCommand(intake, 0));
+        new GamepadButton(base, GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new IntakeCommand(intake, 1)).whenPressed(new TransferCommand(transfer, 1)).whenReleased(new IntakeCommand(intake, 0)).whenReleased(new TransferCommand(transfer, 0));
         new GamepadButton(base, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new IntakeCommand(intake, -1)).whenReleased(new IntakeCommand(intake, 0));
 
 

@@ -6,6 +6,7 @@ import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -41,7 +42,10 @@ public class Drive extends SubsystemBase {
         this.imu = hMap.get(IMU.class, imu);
         IMU.Parameters parameters = Constants.IMU_ORIENTATION;
         this.imu.initialize(parameters);
-
+        this.fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        this.bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
     }
 

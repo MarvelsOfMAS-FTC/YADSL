@@ -22,7 +22,7 @@ public class IntakeSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
-        //telemetry.addData("Intake ", intake.getPower());
+        //telemetry.addData("Intake ", 0+intake.getPower());
         //telemetry.update();
     }
 }

@@ -29,7 +29,7 @@ public class Solo extends CommandOpMode {
         GamepadEx base = new GamepadEx(gamepad1);
 
         IntakeSubsystem intake = new IntakeSubsystem(hardwareMap, Constants.intake);
-        Drive drive = new Drive(hardwareMap, Constants.imu,new MotorConfig(Constants.fr,Constants.fl,Constants.br,Constants.bl),new MotorDirectionConfig(true,false,true,false));
+        Drive drive = new Drive(hardwareMap, Constants.imu,new MotorConfig(Constants.fr,Constants.fl,Constants.br,Constants.bl),new MotorDirectionConfig(false,true,false,true));
         DroneSubsystem drone = new DroneSubsystem(hardwareMap, Constants.drone);
         HandSubsystem hand = new HandSubsystem(hardwareMap, Constants.hand);
         SlideSubsystem slide = new SlideSubsystem(hardwareMap, Constants.rSlide, Constants.lSlide, DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD);

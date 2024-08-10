@@ -44,8 +44,8 @@ public class PIDFArmSubsystem extends SubsystemBase {
         double ff = Math.cos(Math.toRadians(target/ticksInDegrees)) * f;
         double power = pid + ff;
         arm.setPower(power);
-        telemetry.addData("pos", pos);
-        telemetry.addData("target", target);
-        telemetry.update();
+        //telemetry.addData("pos", pos);
+        //telemetry.addData("target", target);
+        //telemetry.update();
     }
 }

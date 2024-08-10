@@ -61,10 +61,10 @@ public class PIDFSlideSubsystem extends SubsystemBase {
         right.setPower(power);
         left.setPower(power1);
 
-        telemetry.addData("pos", pos);
-        telemetry.addData("target", target);
-        telemetry.addData("pos1", pos1);
-        telemetry.addData("target1", target1);
-        telemetry.update();
+        //telemetry.addData("pos", pos);
+        //telemetry.addData("target", target);
+        //telemetry.addData("pos1", pos1);
+        //telemetry.addData("target1", target1);
+        //telemetry.update();
     }
 }

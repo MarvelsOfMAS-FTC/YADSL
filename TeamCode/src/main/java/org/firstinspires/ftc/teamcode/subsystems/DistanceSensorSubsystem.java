@@ -51,8 +51,8 @@ public class DistanceSensorSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        telemetry.addData("(MM) Distance " + sensor.getDeviceName(), sensor.getDistance(DistanceUnit.MM));
-        telemetry.update();
+        //telemetry.addData("(MM) Distance " + sensor.getDeviceName(), sensor.getDistance(DistanceUnit.MM));
+        //telemetry.update();
         // This method will be called once per scheduler run
     }
 }

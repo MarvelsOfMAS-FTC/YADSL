@@ -21,7 +21,7 @@ public class TransferSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
-        telemetry.addData("transfer ", transfer.getPower());
-        telemetry.update();
+        //telemetry.addData("transfer ", transfer.getPower());
+        //telemetry.update();
     }
 }

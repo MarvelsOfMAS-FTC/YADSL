@@ -22,7 +22,7 @@ public class DroneSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
-        telemetry.addData("Drone ", drone.getPosition());
-        telemetry.update();
+        //telemetry.addData("Drone ", drone.getPosition());
+        //telemetry.update();
     }
 }

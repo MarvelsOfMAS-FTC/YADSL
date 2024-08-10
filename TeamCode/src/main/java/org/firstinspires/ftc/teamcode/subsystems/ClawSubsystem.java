@@ -22,9 +22,9 @@ public class ClawSubsystem extends SubsystemBase {
     }
     @Override
     public void periodic() {
-        telemetry.addData("Right ", right.getPosition());
-        telemetry.addData("Left ", left.getPosition());
-        telemetry.update();
+        //telemetry.addData("Right ", right.getPosition());
+        //telemetry.addData("Left ", left.getPosition());
+        //telemetry.update();
         // This method will be called once per scheduler run
     }
 }

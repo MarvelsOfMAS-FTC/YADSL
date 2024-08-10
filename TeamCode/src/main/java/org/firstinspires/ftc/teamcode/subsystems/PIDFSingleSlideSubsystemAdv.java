@@ -42,8 +42,8 @@ public class PIDFSingleSlideSubsystemAdv extends SubsystemBase {
         double ff = f * slide.getCurrentPosition();
         double power = pid + ff;
         slide.setPower(power);
-        telemetry.addData("pos", pos);
-        telemetry.addData("target", target);
-        telemetry.update();
+        //telemetry.addData("pos", pos);
+        //telemetry.addData("target", target);
+        //telemetry.update();
     }
 }

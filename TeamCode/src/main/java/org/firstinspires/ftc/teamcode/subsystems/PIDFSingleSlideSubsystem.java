@@ -41,8 +41,8 @@ public class PIDFSingleSlideSubsystem extends SubsystemBase {
         double pid = controller.calculate(pos, target);
         double power = pid + f;
         slide.setPower(power);
-        telemetry.addData("pos", pos);
-        telemetry.addData("target", target);
-        telemetry.update();
+        //telemetry.addData("pos", pos);
+        //telemetry.addData("target", target);
+        //telemetry.update();
     }
 }

@@ -20,8 +20,8 @@ public class HandSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        telemetry.addData("Hand ", hand.getPosition());
-        telemetry.update();
+        //telemetry.addData("Hand ", hand.getPosition());
+        //telemetry.update();
         // This method will be called once per scheduler run
     }
 }

@@ -20,7 +20,7 @@ public class ArmSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
-        telemetry.addData("Arm ", arm.getCurrentPosition());
-        telemetry.update();
+        //telemetry.addData("Arm ", arm.getCurrentPosition());
+        //telemetry.update();
     }
 }

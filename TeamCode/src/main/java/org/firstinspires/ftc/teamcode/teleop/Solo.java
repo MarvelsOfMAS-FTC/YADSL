@@ -57,5 +57,10 @@ public class Solo extends CommandOpMode {
         telemetry.addData("Transfer Power: ", transfer.get());
         telemetry.addData("Hand Position: ", hand.get());
         telemetry.addData("Drone position: ", drone.get());
+        telemetry.addData("Front Right Velocity: ", drive.getFR());
+        telemetry.addData("Front Left Velocity: ", drive.getFL());
+        telemetry.addData("Back Right Velocity: ", drive.getBR());
+        telemetry.addData("Back Left Velocity: ", drive.getBL());
+        telemetry.addData("Heading (Degrees): ", drive.getHeading());
     }
 }

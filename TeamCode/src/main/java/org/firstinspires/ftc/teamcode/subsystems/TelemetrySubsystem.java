@@ -29,7 +29,17 @@ public class TelemetrySubsystem {
                 .headerLine();
     }
     public void addData(){
-        
+        telemetry.addData("Intake Velocity: ", Solo.intake.get());
+        telemetry.addData("Right Slide Velocity: ", Solo.slide.getRight());
+        telemetry.addData("Left Slide Velocity: ", Solo.slide.getLeft());
+        telemetry.addData("Transfer Power: ", Solo.transfer.get());
+        telemetry.addData("Hand Position: ", Solo.hand.get());
+        telemetry.addData("Drone position: ", Solo.drone.get());
+        telemetry.addData("Front Right Velocity: ", Solo.drive.getFR());
+        telemetry.addData("Front Left Velocity: ", Solo.drive.getFL());
+        telemetry.addData("Back Right Velocity: ", Solo.drive.getBR());
+        telemetry.addData("Back Left Velocity: ", Solo.drive.getBL());
+        telemetry.addData("Heading (Degrees): ", Solo.drive.getHeading());
     }
 
     public void update(){ //use Solo.Subsystem.Method()

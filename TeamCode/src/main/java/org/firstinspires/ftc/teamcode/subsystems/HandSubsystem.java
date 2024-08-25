@@ -17,6 +17,9 @@ public class HandSubsystem extends SubsystemBase {
     public void set(double pos) {
         this.hand.setPosition(pos);
     }
+    public double get(){
+        return this.hand.getPosition();
+    }
 
     @Override
     public void periodic() {

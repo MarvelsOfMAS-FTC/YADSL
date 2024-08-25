@@ -21,6 +21,12 @@ public class SlideSubsystem extends SubsystemBase {
         this.right.setPower(speed);
         this.left.setPower(speed);
     }
+    public double getRight(){
+        return this.right.getVelocity();
+    }
+    public double getLeft(){
+        return this.left.getVelocity();
+    }
 
     @Override
     public void periodic() {

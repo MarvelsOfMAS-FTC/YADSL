@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode.subsystems;
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
 
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -17,6 +16,9 @@ public class IntakeSubsystem extends SubsystemBase {
     }
     public void set(double speed) {
         this.intake.setPower(speed);
+    }
+    public double get(){
+        return this.intake.getVelocity();
     }
 
     @Override

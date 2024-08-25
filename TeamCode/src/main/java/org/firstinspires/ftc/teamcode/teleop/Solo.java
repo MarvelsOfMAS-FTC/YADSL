@@ -50,6 +50,12 @@ public class Solo extends CommandOpMode {
         new GamepadButton(base, GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new IntakeCommand(intake, 1)).whenPressed(new TransferCommand(transfer, -1)).whenReleased(new IntakeCommand(intake, 0)).whenReleased(new TransferCommand(transfer, 0));
         new GamepadButton(base, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new IntakeCommand(intake, -1)).whenReleased(new IntakeCommand(intake, 0));
 
-
+        //Telemetry
+        telemetry.addData("Intake Velocity: ", intake.get());
+        telemetry.addData("Right Slide Velocity: ", slide.getRight());
+        telemetry.addData("Left Slide Velocity: ", slide.getLeft());
+        telemetry.addData("Transfer Power: ", transfer.get());
+        telemetry.addData("Hand Position: ", hand.get());
+        telemetry.addData("Drone position: ", drone.get());
     }
 }

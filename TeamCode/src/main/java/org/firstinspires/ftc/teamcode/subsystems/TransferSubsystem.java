@@ -17,7 +17,9 @@ public class TransferSubsystem extends SubsystemBase {
     public void set(double speed) {
         this.transfer.setPower(speed);
     }
-
+    public double get(){
+        return this.transfer.getPower();
+    }
     @Override
     public void periodic() {
         // This method will be called once per scheduler run

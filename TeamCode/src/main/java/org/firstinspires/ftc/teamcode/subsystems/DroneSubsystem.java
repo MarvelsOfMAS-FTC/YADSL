@@ -18,6 +18,9 @@ public class DroneSubsystem extends SubsystemBase {
     public void set(double pos) {
         this.drone.setPosition(pos);
     }
+    public double get(){
+        return this.drone.getPosition();
+    }
 
     @Override
     public void periodic() {

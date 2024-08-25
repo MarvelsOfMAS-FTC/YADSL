@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
+import com.acmerobotics.dashboard.FtcDashboard;
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.RunCommand;
 import com.arcrobotics.ftclib.command.button.GamepadButton;
@@ -20,6 +21,7 @@ import org.firstinspires.ftc.teamcode.subsystems.DroneSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.HandSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.SlideSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.TelemetrySubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.TransferSubsystem;
 import org.firstinspires.ftc.teamcode.utils.MotorConfig;
 import org.firstinspires.ftc.teamcode.utils.MotorDirectionConfig;
@@ -35,6 +37,7 @@ public class Solo extends CommandOpMode {
     public static HandSubsystem hand;
     public static SlideSubsystem slide;
     public static TransferSubsystem transfer;
+    public static TelemetrySubsystem telemetrySubsystem;
     @Override
     public void initialize() {
         base = new GamepadEx(gamepad1);
@@ -45,10 +48,11 @@ public class Solo extends CommandOpMode {
         hand = new HandSubsystem(hardwareMap, Constants.hand);
         slide = new SlideSubsystem(hardwareMap, Constants.rSlide, Constants.lSlide, DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD);
         transfer = new TransferSubsystem(hardwareMap, Constants.transfer);
-
+        telemetrySubsystem = new TelemetrySubsystem(log,telemetry, FtcDashboard.getInstance());
 
 
         //Default Commands
+
         drive.setDefaultCommand(new DriveCommand(drive,base));
         intake.setDefaultCommand(new IntakeCommand(intake, 0));
         drone.setDefaultCommand(new DroneCommand(drone, Constants.load));
@@ -61,9 +65,19 @@ public class Solo extends CommandOpMode {
         new GamepadButton(base, GamepadKeys.Button.RIGHT_BUMPER).whenPressed(new IntakeCommand(intake, 1)).whenPressed(new TransferCommand(transfer, -1)).whenReleased(new IntakeCommand(intake, 0)).whenReleased(new TransferCommand(transfer, 0));
         new GamepadButton(base, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new IntakeCommand(intake, -1)).whenReleased(new IntakeCommand(intake, 0));
 
-        //Log Setup
+        // logs stuffs
 
+        telemetrySubsystem.addLogHeadings();
 
+        // add logs
+
+        schedule(new RunCommand(telemetrySubsystem::addTelemetryData));
+        schedule(new RunCommand(telemetrySubsystem::addDashBoardData));
+
+        // update logging stuffs
+        
+        schedule(new RunCommand(telemetrySubsystem::updateDashboardTelemetry));
+        schedule(new RunCommand(telemetrySubsystem::updateLogs));
         schedule(new RunCommand(telemetry::update));
     }
 

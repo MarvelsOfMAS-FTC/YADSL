@@ -1,2 +1,2 @@
 ## YAGDL
-# Yet another drive library
+# Yet another drive subsystem library

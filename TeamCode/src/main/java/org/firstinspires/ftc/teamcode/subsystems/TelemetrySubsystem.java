@@ -43,7 +43,7 @@ public class TelemetrySubsystem {
                 .add(RobotContainer.drive.getFR())
                 .add(RobotContainer.drive.getFL())
                 .add(RobotContainer.drive.getBR())
-                .add(RobotContainer.drive.getBL()));
+                .add(RobotContainer.drive.getBL());
 
     }
     public void addDashBoardData(){

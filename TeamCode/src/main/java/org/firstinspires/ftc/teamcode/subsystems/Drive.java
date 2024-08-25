@@ -45,7 +45,21 @@ public class Drive extends SubsystemBase {
 
     }
 
-
+    public double getFL(){
+        return this.fl.getVelocity();
+    }
+    public double getFR(){
+        return this.fr.getVelocity();
+    }
+    public double getBL(){
+        return this.bl.getVelocity();
+    }
+    public double getBR(){
+        return this.br.getVelocity();
+    }
+    public double getHeading(){
+        return this.imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+    }
     /*
      * y = -leftsticky
      * x = leftstickx
